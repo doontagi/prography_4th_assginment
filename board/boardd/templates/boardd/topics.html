@@ -1,0 +1,40 @@
+{% extends 'boardd/tool.html' %}
+
+{% block title %}
+  {{ board.name }} - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Boards</a></li>
+  <li class="breadcrumb-item active">{{ board.name }}</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+  <a href="{% url 'new_topic' board.pk %}" class="btn btn-primary">글쓰기</a>
+</div>
+
+<table class="table">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>댓글</th>
+        <th>시간</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for topic in board.topics.all %}
+  {% if topic.posts.all %}
+  <tr>
+    <td><a href="{% url 'topic_posts' board.pk topic.pk %}">{{ topic.subject }}</a></td>
+    <td>{{ topic.starter.username }}</td>
+    <td>0</td>
+    <td>{{ topic.last_updated }}</td>
+  </tr>
+  {% endif %}
+{% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
