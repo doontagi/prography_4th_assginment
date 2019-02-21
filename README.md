@@ -1,4 +1,4 @@
-#  Prography_4th_assginment
+#  Prography_4th_assignment
 * 프로그라피 사전과제
 * 글 작성, 읽기, 수정, 삭제, 댓글 기능이 있는 게시판 구현
 * django, css 사용
