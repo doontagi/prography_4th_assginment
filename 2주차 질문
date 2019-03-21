@@ -1,0 +1,25 @@
+1. save()
+
+  def save(self, *args, **kwargs):
+        """
+        Use the `pygments` library to create a highlighted HTML
+        representation of the code snippet.
+        """
+        lexer = get_lexer_by_name(self.language)
+        linenos = 'table' if self.linenos else False
+        options = {'title': self.title} if self.title else {}
+        formatter = HtmlFormatter(style=self.style, linenos=linenos,
+                                  full=True, **options)
+        self.highlighted = highlight(self.code, lexer, formatter)
+        super(Snippet, self).save(*args, **kwargs)
+        
+   4장 첫 부분에 나오는 모델에 추가하는 save 함수인데 
+   super, save 코드를 봐도 이게 어떤 식으로 작동하는 건지 전혀 이해를 못하겠음ㅠㅠ
+   
+ 2.
+  지금까지 배우는 내용들 다 아 그렇구나 하고 넘어가고는 있는데
+  아직도 먼가 drf의 유용성에 대해서 모호한 느낌이 있음..
+  drf로 실제 사용되고 있는 코드같은걸 보면 엄청 좋을것같음!
+  
+   
+   
